@@ -1,0 +1,35 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        
+        Scanner sc = new Scanner(System.in);
+        
+        int typeFish = 0;	//可放入鱼的种类
+        int minSize = sc.nextInt();
+        int maxSize = sc.nextInt();
+        int n = sc.nextInt();    //已有鱼的数量
+        
+        int fishSize[] = new int[n];
+        
+        for (int i = 0;i < n;i++) {
+            fishSize[i] = sc.nextInt();;
+        }
+        
+        for (int x = minSize;x <= maxSize;x++) {
+            boolean live = false;
+            for (int i = 0;i < n;i++) {
+                if((x >= fishSize[i] * 2 && x <= fishSize[i] * 10) || (fishSize[i] >= x * 2 && fishSize[i] <= x * 10)) {
+                    live = true;
+                    break;
+                }
+            }
+            
+            if (!live) {
+                typeFish ++;
+            }
+        }
+        
+        System.out.println(typeFish);
+    }
+}
