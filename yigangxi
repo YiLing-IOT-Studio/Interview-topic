@@ -1,0 +1,43 @@
+#include "stdio.h"
+#include "stdlib.h"
+
+int main()
+{
+    int i,j,count=0;
+    int maxSize,minSize;
+    int fish_num,fishSize[50];
+
+    while(1)
+    {
+        scanf("%d %d",&minSize,&maxSize);
+        if(minSize>=1&&maxSize<=1000)
+            break;
+    }
+
+    while(1)
+    {
+        scanf("%d",&fish_num);
+        if(fish_num>=1&&fish_num<=50)
+            break;
+    }
+
+    for(i=0;i<fish_num;i++)
+    {
+        while(1)
+        {
+            scanf("%d",&fishSize[i]);
+            if(fishSize[i]>=1&&fishSize[i]<=1000)
+                break;
+        }
+    }
+	for(j=minSize;j<=maxSize;j++)
+	{
+		for(i=0;i<fish_num;i++)
+		{
+			if(j<fishSize[i]*2||j>fishSize[i]*10)
+				count++;
+		}
+	}
+	printf("%d",count);
+	return 0;
+}
