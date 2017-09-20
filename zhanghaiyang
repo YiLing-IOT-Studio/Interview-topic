@@ -1,0 +1,25 @@
+#include<stdio.h>
+#include<math.h>
+int main() {
+	int minSize,maxSize,n,fishSize;
+	int i,count=0,j;
+	int size[1001]={0}; 
+	scanf("%d %d",&minSize,&maxSize);
+	scanf("%d",&n);
+	for(i=1;i<=n;i++) {
+		scanf("%d",&fishSize);
+		for(j=2*fishSize;j<=maxSize && j<=10*fishSize;j++) {
+			size[j]=1;
+		}
+		for(j=fishSize/2;j>=minSize && j>=ceil(fishSize/10.0);j--) {
+			size[j]=1;
+		}
+	}
+	for(i=minSize;i<=maxSize;i++) {
+		if(size[i] == 0) {
+			count++;
+		}
+	}
+	printf("%d",count);
+	return 0;
+}
