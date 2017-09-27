@@ -1,0 +1,26 @@
+package com.chenjinheng.niuke;
+import java.util.Scanner;
+public class ChildrenGame {
+    public static void main(String[] args) {
+        int m,n,start = 0,i = -1 ;
+        Scanner tempScanner = new Scanner(System.in);
+        m = tempScanner.nextInt();
+        n = tempScanner.nextInt();
+        int [] children = new int[n];
+        for(int z = n;z>0 ;z--) {
+            i++;
+            if (i >= n) {
+                i = 0;
+            }
+            if(children[i] == -1){
+                continue;
+            }
+            start++;
+            if(start == m){
+                children[i] = -1;
+                start = 0;
+            }
+        }
+        System.out.println(i);
+    }//of main
+}//of class ChildrenGame
