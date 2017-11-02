@@ -1,0 +1,60 @@
+package GitHub;
+
+import javax.swing.tree.TreeNode;
+
+/**
+ * Created by 李攀 on 2017/11/1.
+ */
+public class Solution {
+
+    //参数为前序遍历和中序遍历
+    public TreeNode reConstructBinaryTree(int [] pre, int [] in) {
+        if(pre == null || in == null) {
+            return null;
+        }
+
+        if (pre.length != in.length) {
+            return null;
+        }
+
+        return ConstructCore(pre,in,0,pre.length - 1,0,in.length - 1);
+    }
+
+    public static TreeNode ConstructCore(int[] pre,int[] in,int preStart,int preEnd,int inStart,int inEnd) {
+
+        TreeNode root = new TreeNode(pre[preStart]);
+        root.left = null;
+        root.right = null;
+
+        if (preStart == preEnd && inStart == inEnd) {
+            return root;
+        }else {
+            System.out.println("输入错误");
+        }
+
+        int rootInorder = 0;
+        for (rootInorder = inStart;rootInorder <= inEnd;rootInorder++) {
+            if (in[rootInorder] == pre[preStart])
+                break;
+            else if (rootInorder == inEnd) {
+                System.out.println("输入错误");
+            }
+        }
+        //左子树长度
+        int leftTreeLength = rootInorder-inStart;
+        //右子树长度
+        int rightTreelength = inEnd - rootInorder;
+
+        //开始构建左右子树
+        //构建左子树
+        if (leftTreeLength > 0) {
+            root.left=ConstructCore(pre, in, preStart+1, preStart+leftTreeLength, inStart,rootInorder-1);
+        }
+
+        if (rightTreelength > 0) {
+            root.right=ConstructCore(pre, in, preStart+leftTreeLength+1, preEnd, rootInorder+1,inEnd);
+        }
+
+        return root;
+    }
+}
