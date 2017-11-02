@@ -67,20 +67,7 @@ public class Solution {
             inTraverseBinTree(node.right);
         }
       }
-  //将二叉树后序遍历，用于测试结果
-    public static void postTraverseBinTree(TreeNode node){
-        if (node==null) {
-              return;
-          }
-        if (node.left!=null) {
-            postTraverseBinTree(node.left);
-          }
-        if(node.right!=null){
-            postTraverseBinTree(node.right);
-        }
-        System.out.print(node.val+",");
-      }
-      //主函数，用于测试结果
+
     public static void main(String[] args){
         int pre[] = {1,2,4,7,3,5,8,9,6};
         int in[]  = {4,7,2,1,8,5,9,3,6};
