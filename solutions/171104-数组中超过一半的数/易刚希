@@ -1,0 +1,45 @@
+```c
+#include <stdio.h>
+#include <malloc.h>
+
+void main()
+{
+	int *p,n,m,i=0,j,temp,flag=0;
+	printf("Please input the length of array:");
+	scanf("%d",&n);
+	p=(int *)malloc(n*sizeof(int));
+	m=n;
+	while(m--)
+	{
+		scanf("%d",&p[i]);
+		i++;
+	}
+	m=n;
+	for(i=0;i<m-1;i++)
+	{
+		for(j=0;j<m-i-1;j++)
+		{
+			if(p[j]>p[j+1])
+			{
+				temp=p[j];
+				p[j]=p[j+1];
+				p[j+1]=temp;
+			}
+		}
+	}
+	i=0;
+	m=n/2;
+	temp=p[m];
+	while(n--)
+	{
+		if(p[i]==temp)
+			flag++;
+		i++;
+	}
+	if(flag>m)
+		printf("%d",temp);
+	else
+		printf("%d",0);
+}
+
+```
