@@ -1,0 +1,18 @@
+#include <stdio.h>
+int main()
+{
+	int i,n,m,a[20],count=0,j;
+	printf("please input how many number you want insert:\n");
+	scanf("%d",&n);
+	for(i=0;i<n;i++)
+		scanf("%d",&a[i]);
+	for(i=0;i<n;i++)
+	{	
+		for(j=i+1;j<n;j++)
+			if(a[i]=a[j])
+				count++;
+			if(count==n/2)
+				printf("%d",a[i]);
+	}
+	return 0;
+}
